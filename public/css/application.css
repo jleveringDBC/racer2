@@ -1,9 +1,97 @@
 .container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+position:Absolute;
+top:200px;
+left:350px;
 }
 th {
   text-align: left;
+}
+
+.racer_table #player1_strip td.active {
+  background-image:url('car1.png');
+  background-size:80px 80px;
+}
+
+.racer_table #player2_strip td.active {
+  background-image:url('car2.png');
+  background-size:80px 80px;
+}
+
+.racer_table td {
+  background-color: #474747;
+
+  padding:40px 40px;
+  border:1px solid #c8c8c8;
+
+}
+ 
+.racer_table td.active {
+  background-color: black;
+}
+
+.racer_table tr {
+}
+
+#stats {
+  width:400px;
+  margin:auto;
+  text-align:left;
+  line-height:30px;
+}
+
+#stats tr {
+  padding:3px 5px;
+}
+
+
+.entrance {
+  height:300px;
+  width:500px;
+  position:absolute;
+  top:200px;
+  left:550px;
+  background-color:#e8e8e8;
+  padding:20px;
+  box-shadow:0px 0px 100px white;
+  border-radius:20px;
+  text-align:Center;
+}
+
+.number {
+  position:absolute;
+  right:-500px;
+  top:200px;
+  height:300px;
+  width:500px;
+  color:white;
+  font-size:300px;
+  text-shadow:0px 0px 5px white;
+}
+
+.entrance input, button {
+  line-height:50px;
+  padding:5px 7px;
+  font-size:20px;
+  width:300px;
+  text-align:center;
+
+}
+
+#play_again {
+  padding:10px;
+  background-color:white;
+  color:#474747;
+  border-radius:100%;
+  font-size:20px;
+  text-decoration:none;
+}
+
+.entrance button {
+  margin-top:20px;
+}
+
+body {background-color:black;
+  color:white;
+  text-align:center;
+  background-image:url('blackcar.jpg');
 }

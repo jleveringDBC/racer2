@@ -16,6 +16,28 @@ post '/play_game' do
 end
 
 get '/play_game' do
-  "GET IT"
+  @this_game = Game.create
+  @this_game.users = [session['player_1'], session['player_2']]
+  session[:start_time] = Time.now
+  session[:game] = @this_game.id
+  erb :racecar
 end
 
+get '/results' do
+  erb :results
+end
+
+get '/endgame/:winner' do
+  @duration = Time.now - session[:start_time]
+  if params[:winner] == "1"
+    @winner = session['player_1']
+  elsif params[:winner] == "2"
+    @winner = session['player_2']
+  end
+  @all_games = Game.all 
+  @this_game = Game.find(session[:game])
+  # @this_game.winner = @winner.username
+  # @this_game.duration = duration
+  @this_game.update_attributes(duration: @duration, winner: @winner.username)
+  erb :endgame
+end

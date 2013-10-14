@@ -1,0 +1,15 @@
+<h1><%=@winner.username%> wins in <span style="color:green"><%=@duration%></span> seconds!!</h1>
+<br/>
+<a id="play_again" href='/play_game'>Play Again</a>
+<table id ="stats">
+<th>Winner</th>
+<th>Time</th>
+<% @all_games.each do |x| %>
+<% if x.winner %>
+<tr>
+<td><%= x.winner %></td>
+<td><%= x.duration %> seconds</td>
+</tr>
+<% end %>
+<% end %>
+</table>
