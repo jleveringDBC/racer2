@@ -41,42 +41,33 @@ Game.prototype.checkwinner = function()
 {
   var winner;
   var length = $("#player1_strip > td").size();
-  if (this.player1.position == length)
+  for(i=0; i<this.players.length; i++)
   {
-    this.winner = "1";
+    if(this.players[i].position == length)
+    {
+      this.winner = i+1;
+    }
   }
-  else if(this.player2.position == length)
-  {
-    this.winner = "2";
-  }
-  if (this.winner != null)
+  if (this.winner !== null)
   {
     var end = new Date().getTime();
     this.duration = end - this.start_time;
     console.log(this.duration);
     $("#endgame").replaceWith("PLAYER" + this.winner + " WON!!!");
-    // $.get("/endgame/" + player_number, function(response){
-    //   console.log(response);
-    //   $("#endgame").replaceWith(response);
-    // });
     $.post('/game_over', {duration: this.duration, winner: this.winner});
   }
 };
 
 Game.prototype.onKeyUp = function(key) {
 
-  if(key == this.player1.key && this.winner == null)
+  for(i=0; i<this.players.length; i++)
   {
-    console.log("Q");
-    this.update_position(this.player1);
-    this.render(1, this.player1);
-    this.checkwinner();
-  }
-  else if(key == this.player2.key && this.winner == null)
-  {
-    this.update_position(this.player2);
-    this.render(2, this.player2);
-    this.checkwinner();
+    if(key == this.players[i].key && this.winner === null)
+    {
+      this.update_position(this.players[i]);
+      this.render(i+1, this.players[i]);
+      this.checkwinner();
+    }
   }
 
 };

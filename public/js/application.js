@@ -35,9 +35,9 @@ function startGame()
             $("#thegame").replaceWith(response);
           });
 
-          // $(document).on('keyup', function(event) {
-          //   game.onKeyUp(event.which);
-          //  });
+          $(document).on('keyup', function(event) {
+            game.onKeyUp(event.which);
+           });
     
 
       }, 100);
