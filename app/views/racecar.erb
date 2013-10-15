@@ -1,7 +1,9 @@
 
 <div class="container">
   <table class="racer_table">
-    <tr id="player1_strip">
+    <% @player_counter.times do |i| %>
+    <% p = i+1 %>
+    <tr id="player<%= p %>_strip">
       <td class="active"></td>
       <td></td>
       <td></td>
@@ -13,8 +15,12 @@
       <td></td>
       <td></td>
       <td></td>
-            <td></td>
+      <td></td>
     </tr>
+    <% end %>
+  </table>
+</div>
+    <!-- 
     <tr id="player2_strip">
       <td class="active"></td>
       <td></td>
@@ -29,10 +35,10 @@
       <td></td>
             <td></td>
     </tr>
-  </table>
+ --><!--   </table>
 
 <div id="results">
 </div>
 
-</div>
+</div> -->
 

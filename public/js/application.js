@@ -1,53 +1,46 @@
+// $(document).ready(function() {
 
-$(document).ready(function() {
+  
+ 
+  
+// });
 
-  $("button").click(function(e) {
+function startGame()
+{
+  // $("#go").on("click", function(e) {
       var form = $("form").select();
-      e.preventDefault();
       $(".entrance").animate({left:'-1000px'});
-      $("#3").delay(500).animate({right:'1400px'}, 800);
-      $("#2").delay(1500).animate({right:'1400px'}, 800);
-      $("#1").delay(2500).animate({right:'1400px'}, 800);
+      // $("#3").delay(500).animate({right:'1400px'}, 800);
+      // $("#2").delay(1500).animate({right:'1400px'}, 800);
+      // $("#1").delay(2500).animate({right:'1400px'}, 800);
       setTimeout(function () {
        
-          var player1 = document.getElementsByName("player_1")[0].value;
-          var player2 = document.getElementsByName("player_2")[0].value;
+          var players = document.getElementsByClassName("player_name");
+          var player_names = [];
+          for(i=0; i < players.length; i++)
+          {
+            player_names[i] = players[i].value;
+          }
+
+          var game = new Game(player_names);
+
+          // var player1 = document.getElementsByName("player_1")[0].value;
+          // var player2 = document.getElementsByName("player_2")[0].value;
 
           
-          var game = new Game(player1,player2);
+          // var game = new Game(player1,player2);
           game.start();
-          // Create Game w/ players
-          $.get("/play_game", function(response){
+
+          $.get("/play_game", {player_count: game.players.length}, function(response){
             $("#thegame").replaceWith(response);
           });
 
-          $(document).on('keyup', function(event) {
-            game.onKeyUp(event.which);
-           });
+          // $(document).on('keyup', function(event) {
+          //   game.onKeyUp(event.which);
+          //  });
     
 
-      }, 2700);
+      }, 100);
       
-  });
- 
-  // function update_position(player, counter)
-  // {
-  //   var length = $("#player" + player + "_strip > td").size();
-  //   if (counter == length)
-  //   {
-  //     $.get("/endgame/" + player, function(response){
-  //       console.log(response);
-  //       $("#results").replaceWith(response);
-  //     });
-
-  //   }
- 
-  //   counter += 1;
-  //   $("#player" + player + "_strip td.active").removeClass("active");
-  //   $("#player" + player + "_strip td:nth-child(" + counter + ")").addClass("active");
-  //   return counter;
-  // }
- 
- 
-  
-});
+  // });
+}

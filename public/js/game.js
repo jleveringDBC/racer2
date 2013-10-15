@@ -1,8 +1,11 @@
-function Game(player1, player2) {
-
-  this.player1 = new Player(81, player1);
-  this.player2 = new Player(80, player2);
-  player_array = [this.player1, this.player2]
+function Game(player_names) {
+  this.players = [];
+  for(i=0; i < player_names.length; i++)
+  {
+   this.players[i] = new Player (80+i, player_names[i]);
+  }
+  // this.player1 = new Player(81, player1);
+  // this.player2 = new Player(80, player2);
   this.winner = null;
 
 }
@@ -14,10 +17,17 @@ Game.prototype.render = function(player_number, player) {
 };
 
 
-Game.prototype.start = function() 
+Game.prototype.start = function()
 {
   this.start_time =  new Date().getTime();
-  $.post('/play_game', {player1: this.player1.name, player2: this.player2.name});
+  var player_names = {};
+  for(i=0; i < this.players.length; i++)
+  {
+    var key = 'player' + (i+1);
+    player_names[key] = this.players[i].name;
+    console.log(this.players[i].name);
+  }
+  $.post('/play_game', player_names);
 };
 
 Game.prototype.update_position = function(player)
@@ -27,7 +37,7 @@ Game.prototype.update_position = function(player)
 
 
 
-Game.prototype.checkwinner = function() 
+Game.prototype.checkwinner = function()
 {
   var winner;
   var length = $("#player1_strip > td").size();

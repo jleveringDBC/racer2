@@ -2,12 +2,15 @@
 <div id="thegame"></div>
 <div class="entrance">
 <h1>Let's fucking play</h1>
-  <form action="/play_game" method="post" >
-    <input type="text" placeholder="Player 1" name="player_1" / >
+  <form action="#">
+    <input type="text" placeholder="Player Name" class="player_name" name="player_1" / >
     <br/>
-    <input type="text" placeholder="Player 2" name="player_2" / >
+    <input type="text" placeholder="Player Name" class="player_name" name="player_2" / >
     <br/>
-    <button type="submit" >Ley Go</button>
+    <div id="ADD_HERE"></div>
+    <button id="go" type="submit" onClick="startGame()" >Ley Go</button>
+    <button id="add_player">Add</button>
+    <button id="remove_player">Remove</button
     </form>
   </div>
 
@@ -25,3 +28,20 @@
 
 <div id="endgame">
 </div>
+
+<script>
+ $("#remove_player").on("click", function(e){
+  e.preventDefault();
+  $("input").last().remove();
+ });
+
+ $("#add_player").on("click", function(e)
+ {
+  e.preventDefault();
+  $.get("/append_user", function(response)
+  {
+    $("#ADD_HERE").replaceWith(response);
+  });
+  
+ });
+ </script>
