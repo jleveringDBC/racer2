@@ -1,8 +1,8 @@
 // $(document).ready(function() {
 
-  
- 
-  
+
+
+
 // });
 
 function startGame()
@@ -13,21 +13,25 @@ function startGame()
       // $("#3").delay(500).animate({right:'1400px'}, 800);
       // $("#2").delay(1500).animate({right:'1400px'}, 800);
       // $("#1").delay(2500).animate({right:'1400px'}, 800);
-      setTimeout(function () {
-       
+      // setTimeout(function () {
+
           var players = document.getElementsByClassName("player_name");
+          var keys = document.getElementsByClassName("player_key");
           var player_names = [];
+          var player_keys = [];
+
           for(i=0; i < players.length; i++)
           {
             player_names[i] = players[i].value;
+            player_keys[i] = keys[i].value.toUpperCase().charCodeAt(0);
           }
 
-          var game = new Game(player_names);
+          var game = new Game(player_names, player_keys);
 
           // var player1 = document.getElementsByName("player_1")[0].value;
           // var player2 = document.getElementsByName("player_2")[0].value;
 
-          
+
           // var game = new Game(player1,player2);
           game.start();
 
@@ -38,9 +42,9 @@ function startGame()
           $(document).on('keyup', function(event) {
             game.onKeyUp(event.which);
            });
-    
 
-      }, 100);
-      
+
+      // }, 2700);
+
   // });
 }

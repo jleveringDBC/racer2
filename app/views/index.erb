@@ -1,14 +1,17 @@
 
 <div id="thegame"></div>
 <div class="entrance">
-<h1>Let's fucking play</h1>
-  <form action="#">
+<h1>Let's Play :3</h1>
+  <form>
     <input type="text" placeholder="Player Name" class="player_name" name="player_1" / >
+    <input type="text" placeholder="Key" class="player_key" name = "key1" maxlength="1">
     <br/>
     <input type="text" placeholder="Player Name" class="player_name" name="player_2" / >
+    <input type="text" placeholder="Key" class="player_key" name = "key2" maxlength="1">
     <br/>
     <div id="ADD_HERE"></div>
-    <button id="go" type="submit" onClick="startGame()" >Ley Go</button>
+  </form>
+    <input id="go" type="submit" onClick="startGame()" value="Ley Go">
     <button id="add_player">Add</button>
     <button id="remove_player">Remove</button
     </form>
@@ -31,7 +34,11 @@
 
 <script>
  $("#remove_player").on("click", function(e){
-  e.preventDefault();
+  // e.preventDefault();
+  // Don't ping server, save HTML as variable in JS
+  // Look at .after as alternative to append
+  // Remove form action and change buttons
+  // Prevent default on form submission
   $("input").last().remove();
  });
 
@@ -42,6 +49,6 @@
   {
     $("#ADD_HERE").replaceWith(response);
   });
-  
+
  });
  </script>

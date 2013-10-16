@@ -1,8 +1,8 @@
-function Game(player_names) {
+function Game(player_names, player_keys) {
   this.players = [];
   for(i=0; i < player_names.length; i++)
   {
-   this.players[i] = new Player (80+i, player_names[i]);
+   this.players[i] = new Player (player_keys[i], player_names[i]);
   }
   // this.player1 = new Player(81, player1);
   // this.player2 = new Player(80, player2);
